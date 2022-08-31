@@ -1,0 +1,11 @@
+version: "3.7"
+
+services:
+  pwc-pairing-mongo:
+    image: mongo:4.0
+    restart: always
+    hostname: pwc-pairing-mongo
+    container_name: pwc-pairing-mongo
+    command: mongod --noauth
+    ports:
+      - 23037:27017

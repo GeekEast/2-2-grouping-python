@@ -1,0 +1,29 @@
+{
+  "name": "pwc-pairing-python",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "pip:dev": ".venv/bin/pip install -r requirements-dev.txt",
+    "pip:app": ".venv/bin/pip install -r requirements.txt",
+    "conda:create": "conda create --prefix ./.venv python=3.7 pip -y",
+    "conda:activate": "conda activate ./.venv",
+    "conda:install": "yarn pip:dev && yarn pip:app",
+    "inspect:deps": "conda list -e > deps.txt",
+    "isort": "isort . -s .venv --profile black",
+    "black": "black . --exclude .venv",
+    "flake8": "flake8 .",
+    "lint:fix": "yarn isort && yarn black",
+    "lint": "yarn isort -c && yarn black --check && yarn flake8",
+    "husky:install": "husky install",
+    "test": "env-cmd -f .env-ci pytest dags/tests",
+    "tdd": "env-cmd -f .env ptw dags/tests"
+  },
+  "devDependencies": {
+    "env-cmd": "^10.1.0",
+    "husky": "^7.0.4"
+  },
+  "keywords": [],
+  "author": "James Tan",
+  "license": "ISC"
+}
